@@ -1,12 +1,12 @@
-package sample;
+package sample.cell_auto;
 
 import javafx.concurrent.Task;
 import javafx.scene.canvas.GraphicsContext;
-import sample.rules.BaseRule;
+import sample.rules.Rule;
 
 public class DrawerTask  extends Task {
 
-    private BaseRule rule;
+    private Rule rule;
     private GraphicsContext gc;
     private Simulation simulation;
     private int xSize;
@@ -19,7 +19,7 @@ public class DrawerTask  extends Task {
     public void setGc(GraphicsContext gc) {
         this.gc = gc;
     }
-    public void setRule(BaseRule rule) {
+    public void setRule(Rule rule) {
         this.rule = rule;
     }
 

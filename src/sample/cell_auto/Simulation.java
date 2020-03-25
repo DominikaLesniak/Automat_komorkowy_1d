@@ -1,10 +1,10 @@
-package sample;
+package sample.cell_auto;
 
 import com.sun.org.apache.xpath.internal.functions.WrongNumberArgsException;
-import sample.rules.BaseRule;
+import sample.rules.Rule;
 
 public class Simulation {
-    public int[][] runSimulation(BaseRule rule, int xSize, int ySize) throws WrongNumberArgsException {
+    public int[][] runSimulation(Rule rule, int xSize, int ySize) throws WrongNumberArgsException {
         int[][] board = initiateBoard(ySize, xSize);
 
         for (int i = 0; i < ySize-1; i++) {

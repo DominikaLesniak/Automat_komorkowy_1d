@@ -9,9 +9,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.paint.Color;
-import sample.DrawerTask;
-import sample.ImplementedRules;
-import sample.rules.BaseRule;
+import sample.cell_auto.DrawerTask;
+import sample.rules.ImplementedRuleNames;
+import sample.rules.Rule;
 
 import java.net.URL;
 import java.util.List;
@@ -37,7 +37,7 @@ public class Controller implements Initializable {
     }
 
     private void prepareChoiceBox() {
-        List<String> ruleNames = ImplementedRules.getRuleNames();
+        List<String> ruleNames = ImplementedRuleNames.getRuleNames();
         ObservableList list = FXCollections.observableArrayList(ruleNames);
         choiceBox.setItems(list);
         choiceBox.setValue(list.get(0));
@@ -46,12 +46,10 @@ public class Controller implements Initializable {
     private void prepareButtons() {
         startButton.setOnAction(t -> {
             String chosenRule = (String) choiceBox.getValue();
-            BaseRule rule = ImplementedRules.getRule(chosenRule);
-            if (rule != null) {
-                int xSize = (int) (canvas.getWidth()/5);
-                int ySize = (int) (canvas.getHeight()/5);
-                runDrawingTask(rule, xSize, ySize);
-            }
+            Rule rule = new Rule(chosenRule);
+            int xSize = (int) (canvas.getWidth()/5);
+            int ySize = (int) (canvas.getHeight()/5);
+            runDrawingTask(rule, xSize, ySize);
         });
         stopButton.setOnAction(t -> {
             task.cancel();
@@ -66,7 +64,7 @@ public class Controller implements Initializable {
                 gc.getCanvas().getHeight());
     }
 
-    private void runDrawingTask(BaseRule rule, int xSize, int ySize) {
+    private void runDrawingTask(Rule rule, int xSize, int ySize) {
         gc = canvas.getGraphicsContext2D();
         clearCanvas(gc);
         task = new DrawerTask();
