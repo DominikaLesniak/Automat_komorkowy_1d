@@ -101,7 +101,7 @@ public class Controller implements Initializable {
 
     private Integer getHeight() {
         String input = heightTextField.getText();
-        if (!input.isEmpty()) {
+        if (!input.isEmpty() && isNumeric(input)) {
             int height = Integer.parseInt(input);
             if(height <= 0) return 1;
             if(height <= CANVAS_HEIGHT)
@@ -112,12 +112,23 @@ public class Controller implements Initializable {
 
     private int getWidth() {
         String input = widthTextField.getText();
-        if (!input.isEmpty()) {
+        if (!input.isEmpty() && isNumeric(input)) {
             int width = Integer.parseInt(input);
             if(width <= 0) return 1;
             if(width <= CANVAS_WIDTH)
                 return width;
         }
         return CANVAS_WIDTH;
+    }
+
+    private boolean isNumeric(String value) {
+        String number=value.replaceAll("\\s+","");
+        for(int i = 0 ; i<number.length();i++){
+            if(!((int)number.charAt(i)>=47 && (int)number.charAt(i)<=57))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
