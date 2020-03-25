@@ -11,6 +11,7 @@ public class DrawerTask  extends Task {
     private Simulation simulation;
     private int xSize;
     private int ySize;
+    private int xDislocation;
 
     public DrawerTask() {
         simulation = new Simulation();
@@ -41,7 +42,7 @@ public class DrawerTask  extends Task {
 
     private void paintPixel(int i, int j, GraphicsContext gc) {
         gc.setFill(javafx.scene.paint.Color.BLACK);
-        gc.fillRect( 5 * i,
+        gc.fillRect(  5 * (xDislocation+i),
                  5 * j,
                 5, 5);
     }
@@ -52,5 +53,9 @@ public class DrawerTask  extends Task {
 
     public void setySize(int ySize) {
         this.ySize = ySize;
+    }
+
+    public void setxDislocation(int xDislocation) {
+        this.xDislocation = xDislocation;
     }
 }

@@ -15,7 +15,7 @@ public class Simulation {
                 board[i+1][j] = nextGenerationValue;
             }
         }
-        //printBoard(board);
+        printBoard(board);
         return board;
     }
 
