@@ -4,7 +4,7 @@ import javafx.concurrent.Task;
 import javafx.scene.canvas.GraphicsContext;
 import sample.rules.Rule;
 
-public class DrawerTask  extends Task {
+public class DrawerTask extends Task {
 
     private Rule rule;
     private GraphicsContext gc;
@@ -20,6 +20,7 @@ public class DrawerTask  extends Task {
     public void setGc(GraphicsContext gc) {
         this.gc = gc;
     }
+
     public void setRule(Rule rule) {
         this.rule = rule;
     }
@@ -42,8 +43,8 @@ public class DrawerTask  extends Task {
 
     private void paintPixel(int i, int j, GraphicsContext gc) {
         gc.setFill(javafx.scene.paint.Color.BLACK);
-        gc.fillRect(  5 * (xDislocation+i),
-                 5 * j,
+        gc.fillRect(5 * (xDislocation + i),
+                5 * j,
                 5, 5);
     }
 

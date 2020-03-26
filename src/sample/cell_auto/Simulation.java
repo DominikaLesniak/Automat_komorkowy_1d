@@ -7,15 +7,15 @@ public class Simulation {
     public int[][] runSimulation(Rule rule, int xSize, int ySize) throws WrongNumberArgsException {
         int[][] board = initiateBoard(ySize, xSize);
 
-        for (int i = 0; i < ySize-1; i++) {
+        for (int i = 0; i < ySize - 1; i++) {
             for (int j = 0; j < xSize; j++) {
-                int leftCellIndex = (j == 0 ? xSize-1 : j-1);
-                int rightCellIndex = (j == xSize-1 ? 0 : j+1);
+                int leftCellIndex = (j == 0 ? xSize - 1 : j - 1);
+                int rightCellIndex = (j == xSize - 1 ? 0 : j + 1);
                 int nextGenerationValue = rule.getNextGenerationValue(board[i][leftCellIndex], board[i][j], board[i][rightCellIndex]);
-                board[i+1][j] = nextGenerationValue;
+                board[i + 1][j] = nextGenerationValue;
             }
         }
-        printBoard(board);
+        //printBoard(board);
         return board;
     }
 

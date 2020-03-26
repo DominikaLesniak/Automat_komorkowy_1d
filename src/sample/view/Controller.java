@@ -40,8 +40,8 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CANVAS_HEIGHT = (int) canvas.getHeight()/5;
-        CANVAS_WIDTH = (int) canvas.getWidth()/5;
+        CANVAS_HEIGHT = (int) canvas.getHeight() / 5;
+        CANVAS_WIDTH = (int) canvas.getWidth() / 5;
         prepareChoiceBox();
         prepareButtons();
     }
@@ -93,7 +93,7 @@ public class Controller implements Initializable {
         task.setRule(rule);
         task.setxSize(xSize);
         task.setySize(ySize);
-        task.setxDislocation((CANVAS_WIDTH-xSize)/2);
+        task.setxDislocation((CANVAS_WIDTH - xSize) / 2);
         Thread thread = new Thread(task);
         thread.start();
         thread.join();
@@ -103,8 +103,9 @@ public class Controller implements Initializable {
         String input = heightTextField.getText();
         if (!input.isEmpty() && isNumeric(input)) {
             int height = Integer.parseInt(input);
-            if(height <= 0) return 1;
-            if(height <= CANVAS_HEIGHT)
+            if (height <= 0)
+                return 1;
+            if (height <= CANVAS_HEIGHT)
                 return height;
         }
         return CANVAS_HEIGHT;
@@ -114,18 +115,18 @@ public class Controller implements Initializable {
         String input = widthTextField.getText();
         if (!input.isEmpty() && isNumeric(input)) {
             int width = Integer.parseInt(input);
-            if(width <= 0) return 1;
-            if(width <= CANVAS_WIDTH)
+            if (width <= 0)
+                return 1;
+            if (width <= CANVAS_WIDTH)
                 return width;
         }
         return CANVAS_WIDTH;
     }
 
     private boolean isNumeric(String value) {
-        String number=value.replaceAll("\\s+","");
-        for(int i = 0 ; i<number.length();i++){
-            if(!((int)number.charAt(i)>=47 && (int)number.charAt(i)<=57))
-            {
+        String number = value.replaceAll("\\s+", "");
+        for (int i = 0; i < number.length(); i++) {
+            if (!((int) number.charAt(i) >= 47 && (int) number.charAt(i) <= 57)) {
                 return false;
             }
         }
